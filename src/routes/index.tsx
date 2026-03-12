@@ -17,6 +17,13 @@ const demos = [
     path: '/pages-n-links',
     tag: 'Router',
   },
+  {
+    title: 'SSR Three Ways',
+    description:
+      'ssr: false, ssr: true, and ssr: "data-only" with a no-CORS api-server — loaders that run on the client fail.',
+    path: '/ssr-three-ways',
+    tag: 'Start',
+  },
 ]
 
 function App() {

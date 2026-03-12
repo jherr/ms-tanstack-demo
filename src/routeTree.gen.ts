@@ -12,9 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UseEffectVsQueryIndexRouteImport } from './routes/useEffect-vs-query/index'
+import { Route as SsrThreeWaysIndexRouteImport } from './routes/ssr-three-ways/index'
 import { Route as PagesNLinksIndexRouteImport } from './routes/pages-n-links/index'
 import { Route as UseEffectVsQueryUseQueryRouteImport } from './routes/useEffect-vs-query/use-query'
 import { Route as UseEffectVsQueryUseEffectRouteImport } from './routes/useEffect-vs-query/use-effect'
+import { Route as SsrThreeWaysSsrTrueRouteImport } from './routes/ssr-three-ways/ssr-true'
+import { Route as SsrThreeWaysSsrFalseWorksRouteImport } from './routes/ssr-three-ways/ssr-false-works'
+import { Route as SsrThreeWaysSsrFalseRouteImport } from './routes/ssr-three-ways/ssr-false'
+import { Route as SsrThreeWaysSsrDataOnlyRouteImport } from './routes/ssr-three-ways/ssr-data-only'
 import { Route as PagesNLinksSearchRouteImport } from './routes/pages-n-links/search'
 import { Route as PagesNLinksNormalRouteImport } from './routes/pages-n-links.normal'
 import { Route as PagesNLinksAppRouteRouteImport } from './routes/pages-n-links/app/route'
@@ -41,6 +46,11 @@ const UseEffectVsQueryIndexRoute = UseEffectVsQueryIndexRouteImport.update({
   path: '/useEffect-vs-query/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SsrThreeWaysIndexRoute = SsrThreeWaysIndexRouteImport.update({
+  id: '/ssr-three-ways/',
+  path: '/ssr-three-ways/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesNLinksIndexRoute = PagesNLinksIndexRouteImport.update({
   id: '/pages-n-links/',
   path: '/pages-n-links/',
@@ -58,6 +68,27 @@ const UseEffectVsQueryUseEffectRoute =
     path: '/useEffect-vs-query/use-effect',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SsrThreeWaysSsrTrueRoute = SsrThreeWaysSsrTrueRouteImport.update({
+  id: '/ssr-three-ways/ssr-true',
+  path: '/ssr-three-ways/ssr-true',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SsrThreeWaysSsrFalseWorksRoute =
+  SsrThreeWaysSsrFalseWorksRouteImport.update({
+    id: '/ssr-three-ways/ssr-false-works',
+    path: '/ssr-three-ways/ssr-false-works',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SsrThreeWaysSsrFalseRoute = SsrThreeWaysSsrFalseRouteImport.update({
+  id: '/ssr-three-ways/ssr-false',
+  path: '/ssr-three-ways/ssr-false',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SsrThreeWaysSsrDataOnlyRoute = SsrThreeWaysSsrDataOnlyRouteImport.update({
+  id: '/ssr-three-ways/ssr-data-only',
+  path: '/ssr-three-ways/ssr-data-only',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesNLinksSearchRoute = PagesNLinksSearchRouteImport.update({
   id: '/pages-n-links/search',
   path: '/pages-n-links/search',
@@ -120,9 +151,14 @@ export interface FileRoutesByFullPath {
   '/pages-n-links/app': typeof PagesNLinksAppRouteRouteWithChildren
   '/pages-n-links/normal': typeof PagesNLinksNormalRoute
   '/pages-n-links/search': typeof PagesNLinksSearchRoute
+  '/ssr-three-ways/ssr-data-only': typeof SsrThreeWaysSsrDataOnlyRoute
+  '/ssr-three-ways/ssr-false': typeof SsrThreeWaysSsrFalseRoute
+  '/ssr-three-ways/ssr-false-works': typeof SsrThreeWaysSsrFalseWorksRoute
+  '/ssr-three-ways/ssr-true': typeof SsrThreeWaysSsrTrueRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
   '/pages-n-links/': typeof PagesNLinksIndexRoute
+  '/ssr-three-ways/': typeof SsrThreeWaysIndexRoute
   '/useEffect-vs-query/': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/inside': typeof PagesNLinksGroupedInsideRoute
   '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
@@ -137,8 +173,13 @@ export interface FileRoutesByTo {
   '/pages-n-links': typeof PagesNLinksIndexRoute
   '/pages-n-links/normal': typeof PagesNLinksNormalRoute
   '/pages-n-links/search': typeof PagesNLinksSearchRoute
+  '/ssr-three-ways/ssr-data-only': typeof SsrThreeWaysSsrDataOnlyRoute
+  '/ssr-three-ways/ssr-false': typeof SsrThreeWaysSsrFalseRoute
+  '/ssr-three-ways/ssr-false-works': typeof SsrThreeWaysSsrFalseWorksRoute
+  '/ssr-three-ways/ssr-true': typeof SsrThreeWaysSsrTrueRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
+  '/ssr-three-ways': typeof SsrThreeWaysIndexRoute
   '/useEffect-vs-query': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/inside': typeof PagesNLinksGroupedInsideRoute
   '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
@@ -155,9 +196,14 @@ export interface FileRoutesById {
   '/pages-n-links/app': typeof PagesNLinksAppRouteRouteWithChildren
   '/pages-n-links/normal': typeof PagesNLinksNormalRoute
   '/pages-n-links/search': typeof PagesNLinksSearchRoute
+  '/ssr-three-ways/ssr-data-only': typeof SsrThreeWaysSsrDataOnlyRoute
+  '/ssr-three-ways/ssr-false': typeof SsrThreeWaysSsrFalseRoute
+  '/ssr-three-ways/ssr-false-works': typeof SsrThreeWaysSsrFalseWorksRoute
+  '/ssr-three-ways/ssr-true': typeof SsrThreeWaysSsrTrueRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
   '/pages-n-links/': typeof PagesNLinksIndexRoute
+  '/ssr-three-ways/': typeof SsrThreeWaysIndexRoute
   '/useEffect-vs-query/': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/_grouped/inside': typeof PagesNLinksGroupedInsideRoute
   '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
@@ -175,9 +221,14 @@ export interface FileRouteTypes {
     | '/pages-n-links/app'
     | '/pages-n-links/normal'
     | '/pages-n-links/search'
+    | '/ssr-three-ways/ssr-data-only'
+    | '/ssr-three-ways/ssr-false'
+    | '/ssr-three-ways/ssr-false-works'
+    | '/ssr-three-ways/ssr-true'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
     | '/pages-n-links/'
+    | '/ssr-three-ways/'
     | '/useEffect-vs-query/'
     | '/pages-n-links/inside'
     | '/pages-n-links/app/settings'
@@ -192,8 +243,13 @@ export interface FileRouteTypes {
     | '/pages-n-links'
     | '/pages-n-links/normal'
     | '/pages-n-links/search'
+    | '/ssr-three-ways/ssr-data-only'
+    | '/ssr-three-ways/ssr-false'
+    | '/ssr-three-ways/ssr-false-works'
+    | '/ssr-three-ways/ssr-true'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
+    | '/ssr-three-ways'
     | '/useEffect-vs-query'
     | '/pages-n-links/inside'
     | '/pages-n-links/app/settings'
@@ -209,9 +265,14 @@ export interface FileRouteTypes {
     | '/pages-n-links/app'
     | '/pages-n-links/normal'
     | '/pages-n-links/search'
+    | '/ssr-three-ways/ssr-data-only'
+    | '/ssr-three-ways/ssr-false'
+    | '/ssr-three-ways/ssr-false-works'
+    | '/ssr-three-ways/ssr-true'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
     | '/pages-n-links/'
+    | '/ssr-three-ways/'
     | '/useEffect-vs-query/'
     | '/pages-n-links/_grouped/inside'
     | '/pages-n-links/app/settings'
@@ -228,9 +289,14 @@ export interface RootRouteChildren {
   PagesNLinksAppRouteRoute: typeof PagesNLinksAppRouteRouteWithChildren
   PagesNLinksNormalRoute: typeof PagesNLinksNormalRoute
   PagesNLinksSearchRoute: typeof PagesNLinksSearchRoute
+  SsrThreeWaysSsrDataOnlyRoute: typeof SsrThreeWaysSsrDataOnlyRoute
+  SsrThreeWaysSsrFalseRoute: typeof SsrThreeWaysSsrFalseRoute
+  SsrThreeWaysSsrFalseWorksRoute: typeof SsrThreeWaysSsrFalseWorksRoute
+  SsrThreeWaysSsrTrueRoute: typeof SsrThreeWaysSsrTrueRoute
   UseEffectVsQueryUseEffectRoute: typeof UseEffectVsQueryUseEffectRoute
   UseEffectVsQueryUseQueryRoute: typeof UseEffectVsQueryUseQueryRoute
   PagesNLinksIndexRoute: typeof PagesNLinksIndexRoute
+  SsrThreeWaysIndexRoute: typeof SsrThreeWaysIndexRoute
   UseEffectVsQueryIndexRoute: typeof UseEffectVsQueryIndexRoute
   PagesNLinksCatchallSplatRoute: typeof PagesNLinksCatchallSplatRoute
   PagesNLinksParamsExampleIdRoute: typeof PagesNLinksParamsExampleIdRoute
@@ -260,6 +326,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseEffectVsQueryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ssr-three-ways/': {
+      id: '/ssr-three-ways/'
+      path: '/ssr-three-ways'
+      fullPath: '/ssr-three-ways/'
+      preLoaderRoute: typeof SsrThreeWaysIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pages-n-links/': {
       id: '/pages-n-links/'
       path: '/pages-n-links'
@@ -279,6 +352,34 @@ declare module '@tanstack/react-router' {
       path: '/useEffect-vs-query/use-effect'
       fullPath: '/useEffect-vs-query/use-effect'
       preLoaderRoute: typeof UseEffectVsQueryUseEffectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ssr-three-ways/ssr-true': {
+      id: '/ssr-three-ways/ssr-true'
+      path: '/ssr-three-ways/ssr-true'
+      fullPath: '/ssr-three-ways/ssr-true'
+      preLoaderRoute: typeof SsrThreeWaysSsrTrueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ssr-three-ways/ssr-false-works': {
+      id: '/ssr-three-ways/ssr-false-works'
+      path: '/ssr-three-ways/ssr-false-works'
+      fullPath: '/ssr-three-ways/ssr-false-works'
+      preLoaderRoute: typeof SsrThreeWaysSsrFalseWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ssr-three-ways/ssr-false': {
+      id: '/ssr-three-ways/ssr-false'
+      path: '/ssr-three-ways/ssr-false'
+      fullPath: '/ssr-three-ways/ssr-false'
+      preLoaderRoute: typeof SsrThreeWaysSsrFalseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ssr-three-ways/ssr-data-only': {
+      id: '/ssr-three-ways/ssr-data-only'
+      path: '/ssr-three-ways/ssr-data-only'
+      fullPath: '/ssr-three-ways/ssr-data-only'
+      preLoaderRoute: typeof SsrThreeWaysSsrDataOnlyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pages-n-links/search': {
@@ -388,9 +489,14 @@ const rootRouteChildren: RootRouteChildren = {
   PagesNLinksAppRouteRoute: PagesNLinksAppRouteRouteWithChildren,
   PagesNLinksNormalRoute: PagesNLinksNormalRoute,
   PagesNLinksSearchRoute: PagesNLinksSearchRoute,
+  SsrThreeWaysSsrDataOnlyRoute: SsrThreeWaysSsrDataOnlyRoute,
+  SsrThreeWaysSsrFalseRoute: SsrThreeWaysSsrFalseRoute,
+  SsrThreeWaysSsrFalseWorksRoute: SsrThreeWaysSsrFalseWorksRoute,
+  SsrThreeWaysSsrTrueRoute: SsrThreeWaysSsrTrueRoute,
   UseEffectVsQueryUseEffectRoute: UseEffectVsQueryUseEffectRoute,
   UseEffectVsQueryUseQueryRoute: UseEffectVsQueryUseQueryRoute,
   PagesNLinksIndexRoute: PagesNLinksIndexRoute,
+  SsrThreeWaysIndexRoute: SsrThreeWaysIndexRoute,
   UseEffectVsQueryIndexRoute: UseEffectVsQueryIndexRoute,
   PagesNLinksCatchallSplatRoute: PagesNLinksCatchallSplatRoute,
   PagesNLinksParamsExampleIdRoute: PagesNLinksParamsExampleIdRoute,
