@@ -10,6 +10,13 @@ const demos = [
     path: '/useEffect-vs-query',
     tag: 'React Query',
   },
+  {
+    title: 'File Routing & Type-Safe Links',
+    description:
+      'Normal routes, catch-all, parameterized routes, and underscore grouping with typed Link components.',
+    path: '/pages-n-links',
+    tag: 'Router',
+  },
 ]
 
 function App() {
