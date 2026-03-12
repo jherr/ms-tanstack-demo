@@ -15,11 +15,15 @@ import { Route as UseEffectVsQueryIndexRouteImport } from './routes/useEffect-vs
 import { Route as PagesNLinksIndexRouteImport } from './routes/pages-n-links/index'
 import { Route as UseEffectVsQueryUseQueryRouteImport } from './routes/useEffect-vs-query/use-query'
 import { Route as UseEffectVsQueryUseEffectRouteImport } from './routes/useEffect-vs-query/use-effect'
+import { Route as PagesNLinksSearchRouteImport } from './routes/pages-n-links/search'
 import { Route as PagesNLinksNormalRouteImport } from './routes/pages-n-links.normal'
+import { Route as PagesNLinksAppRouteRouteImport } from './routes/pages-n-links/app/route'
 import { Route as PagesNLinksGroupedRouteRouteImport } from './routes/pages-n-links/_grouped/route'
+import { Route as PagesNLinksAppIndexRouteImport } from './routes/pages-n-links/app/index'
 import { Route as UseEffectVsQueryApiUsersRouteImport } from './routes/useEffect-vs-query/api/users'
 import { Route as PagesNLinksParamsExampleIdRouteImport } from './routes/pages-n-links/params/$exampleId'
 import { Route as PagesNLinksCatchallSplatRouteImport } from './routes/pages-n-links/catchall/$'
+import { Route as PagesNLinksAppSettingsRouteImport } from './routes/pages-n-links/app/settings'
 import { Route as PagesNLinksGroupedInsideRouteImport } from './routes/pages-n-links/_grouped/inside'
 
 const AboutRoute = AboutRouteImport.update({
@@ -54,15 +58,30 @@ const UseEffectVsQueryUseEffectRoute =
     path: '/useEffect-vs-query/use-effect',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PagesNLinksSearchRoute = PagesNLinksSearchRouteImport.update({
+  id: '/pages-n-links/search',
+  path: '/pages-n-links/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesNLinksNormalRoute = PagesNLinksNormalRouteImport.update({
   id: '/pages-n-links/normal',
   path: '/pages-n-links/normal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesNLinksAppRouteRoute = PagesNLinksAppRouteRouteImport.update({
+  id: '/pages-n-links/app',
+  path: '/pages-n-links/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PagesNLinksGroupedRouteRoute = PagesNLinksGroupedRouteRouteImport.update({
   id: '/pages-n-links/_grouped',
   path: '/pages-n-links',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PagesNLinksAppIndexRoute = PagesNLinksAppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PagesNLinksAppRouteRoute,
 } as any)
 const UseEffectVsQueryApiUsersRoute =
   UseEffectVsQueryApiUsersRouteImport.update({
@@ -82,6 +101,11 @@ const PagesNLinksCatchallSplatRoute =
     path: '/pages-n-links/catchall/$',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PagesNLinksAppSettingsRoute = PagesNLinksAppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => PagesNLinksAppRouteRoute,
+} as any)
 const PagesNLinksGroupedInsideRoute =
   PagesNLinksGroupedInsideRouteImport.update({
     id: '/inside',
@@ -93,43 +117,54 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/pages-n-links': typeof PagesNLinksGroupedRouteRouteWithChildren
+  '/pages-n-links/app': typeof PagesNLinksAppRouteRouteWithChildren
   '/pages-n-links/normal': typeof PagesNLinksNormalRoute
+  '/pages-n-links/search': typeof PagesNLinksSearchRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
   '/pages-n-links/': typeof PagesNLinksIndexRoute
   '/useEffect-vs-query/': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/inside': typeof PagesNLinksGroupedInsideRoute
+  '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
   '/pages-n-links/catchall/$': typeof PagesNLinksCatchallSplatRoute
   '/pages-n-links/params/$exampleId': typeof PagesNLinksParamsExampleIdRoute
   '/useEffect-vs-query/api/users': typeof UseEffectVsQueryApiUsersRoute
+  '/pages-n-links/app/': typeof PagesNLinksAppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/pages-n-links': typeof PagesNLinksIndexRoute
   '/pages-n-links/normal': typeof PagesNLinksNormalRoute
+  '/pages-n-links/search': typeof PagesNLinksSearchRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
   '/useEffect-vs-query': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/inside': typeof PagesNLinksGroupedInsideRoute
+  '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
   '/pages-n-links/catchall/$': typeof PagesNLinksCatchallSplatRoute
   '/pages-n-links/params/$exampleId': typeof PagesNLinksParamsExampleIdRoute
   '/useEffect-vs-query/api/users': typeof UseEffectVsQueryApiUsersRoute
+  '/pages-n-links/app': typeof PagesNLinksAppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/pages-n-links/_grouped': typeof PagesNLinksGroupedRouteRouteWithChildren
+  '/pages-n-links/app': typeof PagesNLinksAppRouteRouteWithChildren
   '/pages-n-links/normal': typeof PagesNLinksNormalRoute
+  '/pages-n-links/search': typeof PagesNLinksSearchRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
   '/pages-n-links/': typeof PagesNLinksIndexRoute
   '/useEffect-vs-query/': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/_grouped/inside': typeof PagesNLinksGroupedInsideRoute
+  '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
   '/pages-n-links/catchall/$': typeof PagesNLinksCatchallSplatRoute
   '/pages-n-links/params/$exampleId': typeof PagesNLinksParamsExampleIdRoute
   '/useEffect-vs-query/api/users': typeof UseEffectVsQueryApiUsersRoute
+  '/pages-n-links/app/': typeof PagesNLinksAppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -137,49 +172,62 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/pages-n-links'
+    | '/pages-n-links/app'
     | '/pages-n-links/normal'
+    | '/pages-n-links/search'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
     | '/pages-n-links/'
     | '/useEffect-vs-query/'
     | '/pages-n-links/inside'
+    | '/pages-n-links/app/settings'
     | '/pages-n-links/catchall/$'
     | '/pages-n-links/params/$exampleId'
     | '/useEffect-vs-query/api/users'
+    | '/pages-n-links/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/pages-n-links'
     | '/pages-n-links/normal'
+    | '/pages-n-links/search'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
     | '/useEffect-vs-query'
     | '/pages-n-links/inside'
+    | '/pages-n-links/app/settings'
     | '/pages-n-links/catchall/$'
     | '/pages-n-links/params/$exampleId'
     | '/useEffect-vs-query/api/users'
+    | '/pages-n-links/app'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/pages-n-links/_grouped'
+    | '/pages-n-links/app'
     | '/pages-n-links/normal'
+    | '/pages-n-links/search'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
     | '/pages-n-links/'
     | '/useEffect-vs-query/'
     | '/pages-n-links/_grouped/inside'
+    | '/pages-n-links/app/settings'
     | '/pages-n-links/catchall/$'
     | '/pages-n-links/params/$exampleId'
     | '/useEffect-vs-query/api/users'
+    | '/pages-n-links/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   PagesNLinksGroupedRouteRoute: typeof PagesNLinksGroupedRouteRouteWithChildren
+  PagesNLinksAppRouteRoute: typeof PagesNLinksAppRouteRouteWithChildren
   PagesNLinksNormalRoute: typeof PagesNLinksNormalRoute
+  PagesNLinksSearchRoute: typeof PagesNLinksSearchRoute
   UseEffectVsQueryUseEffectRoute: typeof UseEffectVsQueryUseEffectRoute
   UseEffectVsQueryUseQueryRoute: typeof UseEffectVsQueryUseQueryRoute
   PagesNLinksIndexRoute: typeof PagesNLinksIndexRoute
@@ -233,11 +281,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseEffectVsQueryUseEffectRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pages-n-links/search': {
+      id: '/pages-n-links/search'
+      path: '/pages-n-links/search'
+      fullPath: '/pages-n-links/search'
+      preLoaderRoute: typeof PagesNLinksSearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pages-n-links/normal': {
       id: '/pages-n-links/normal'
       path: '/pages-n-links/normal'
       fullPath: '/pages-n-links/normal'
       preLoaderRoute: typeof PagesNLinksNormalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages-n-links/app': {
+      id: '/pages-n-links/app'
+      path: '/pages-n-links/app'
+      fullPath: '/pages-n-links/app'
+      preLoaderRoute: typeof PagesNLinksAppRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pages-n-links/_grouped': {
@@ -246,6 +308,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/pages-n-links'
       preLoaderRoute: typeof PagesNLinksGroupedRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/pages-n-links/app/': {
+      id: '/pages-n-links/app/'
+      path: '/'
+      fullPath: '/pages-n-links/app/'
+      preLoaderRoute: typeof PagesNLinksAppIndexRouteImport
+      parentRoute: typeof PagesNLinksAppRouteRoute
     }
     '/useEffect-vs-query/api/users': {
       id: '/useEffect-vs-query/api/users'
@@ -267,6 +336,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/pages-n-links/catchall/$'
       preLoaderRoute: typeof PagesNLinksCatchallSplatRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/pages-n-links/app/settings': {
+      id: '/pages-n-links/app/settings'
+      path: '/settings'
+      fullPath: '/pages-n-links/app/settings'
+      preLoaderRoute: typeof PagesNLinksAppSettingsRouteImport
+      parentRoute: typeof PagesNLinksAppRouteRoute
     }
     '/pages-n-links/_grouped/inside': {
       id: '/pages-n-links/_grouped/inside'
@@ -292,11 +368,26 @@ const PagesNLinksGroupedRouteRouteWithChildren =
     PagesNLinksGroupedRouteRouteChildren,
   )
 
+interface PagesNLinksAppRouteRouteChildren {
+  PagesNLinksAppSettingsRoute: typeof PagesNLinksAppSettingsRoute
+  PagesNLinksAppIndexRoute: typeof PagesNLinksAppIndexRoute
+}
+
+const PagesNLinksAppRouteRouteChildren: PagesNLinksAppRouteRouteChildren = {
+  PagesNLinksAppSettingsRoute: PagesNLinksAppSettingsRoute,
+  PagesNLinksAppIndexRoute: PagesNLinksAppIndexRoute,
+}
+
+const PagesNLinksAppRouteRouteWithChildren =
+  PagesNLinksAppRouteRoute._addFileChildren(PagesNLinksAppRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   PagesNLinksGroupedRouteRoute: PagesNLinksGroupedRouteRouteWithChildren,
+  PagesNLinksAppRouteRoute: PagesNLinksAppRouteRouteWithChildren,
   PagesNLinksNormalRoute: PagesNLinksNormalRoute,
+  PagesNLinksSearchRoute: PagesNLinksSearchRoute,
   UseEffectVsQueryUseEffectRoute: UseEffectVsQueryUseEffectRoute,
   UseEffectVsQueryUseQueryRoute: UseEffectVsQueryUseQueryRoute,
   PagesNLinksIndexRoute: PagesNLinksIndexRoute,

@@ -36,6 +36,20 @@ const examples = [
     to: '/pages-n-links/inside' as const,
     docsHash: '#types-of-routes',
   },
+  {
+    title: 'Search (Zod)',
+    description: 'Search params validated with Zod at runtime; valid and invalid URLs show different UI.',
+    to: '/pages-n-links/search' as const,
+    search: { query: 'hello', page: 1 },
+    docsHash: '#quick-start',
+    docsUrl: 'https://tanstack.com/router/latest/docs/how-to/validate-search-params',
+  },
+  {
+    title: 'Nested layout',
+    description: 'Logged-in style layout at /pages-n-links/app with shared shell and child routes (Dashboard, Settings).',
+    to: '/pages-n-links/app' as const,
+    docsHash: '#nested-routing',
+  },
 ]
 
 function PagesNLinksIndex() {
@@ -85,11 +99,12 @@ function PagesNLinksIndex() {
 
         <ul className="grid list-none gap-4 p-0 sm:grid-cols-2">
           {examples.map((ex) => (
-            <li key={ex.to}>
+            <li key={ex.to + (ex.search ? JSON.stringify(ex.search) : '')}>
               <div className="island-shell feature-card group rounded-2xl p-6 transition hover:-translate-y-1">
                 <Link
                   to={ex.to}
-                  params={ex.params ?? undefined}
+                  params={'params' in ex ? ex.params : undefined}
+                  search={'search' in ex ? ex.search : undefined}
                   className="block no-underline"
                 >
                   <h2 className="mb-2 text-lg font-semibold text-[var(--sea-ink)] group-hover:text-[var(--lagoon-deep)]">
@@ -100,7 +115,7 @@ function PagesNLinksIndex() {
                   </p>
                 </Link>
                 <a
-                  href={`${ROUTING_GUIDE}${ex.docsHash}`}
+                  href={'docsUrl' in ex && ex.docsUrl ? `${ex.docsUrl}${ex.docsHash ? ex.docsHash : ''}` : `${ROUTING_GUIDE}${ex.docsHash}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-[var(--lagoon-deep)] underline hover:no-underline"
