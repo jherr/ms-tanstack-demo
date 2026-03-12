@@ -13,6 +13,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UseEffectVsQueryIndexRouteImport } from './routes/useEffect-vs-query/index'
 import { Route as SsrThreeWaysIndexRouteImport } from './routes/ssr-three-ways/index'
+import { Route as ServerFunctionsAreAwesomeIndexRouteImport } from './routes/server-functions-are-awesome/index'
 import { Route as PagesNLinksIndexRouteImport } from './routes/pages-n-links/index'
 import { Route as UseEffectVsQueryUseQueryRouteImport } from './routes/useEffect-vs-query/use-query'
 import { Route as UseEffectVsQueryUseEffectRouteImport } from './routes/useEffect-vs-query/use-effect'
@@ -26,6 +27,7 @@ import { Route as PagesNLinksAppRouteRouteImport } from './routes/pages-n-links/
 import { Route as PagesNLinksGroupedRouteRouteImport } from './routes/pages-n-links/_grouped/route'
 import { Route as PagesNLinksAppIndexRouteImport } from './routes/pages-n-links/app/index'
 import { Route as UseEffectVsQueryApiUsersRouteImport } from './routes/useEffect-vs-query/api/users'
+import { Route as ServerFunctionsAreAwesomeApiSseRouteImport } from './routes/server-functions-are-awesome/api/sse'
 import { Route as PagesNLinksParamsExampleIdRouteImport } from './routes/pages-n-links/params/$exampleId'
 import { Route as PagesNLinksCatchallSplatRouteImport } from './routes/pages-n-links/catchall/$'
 import { Route as PagesNLinksAppSettingsRouteImport } from './routes/pages-n-links/app/settings'
@@ -51,6 +53,12 @@ const SsrThreeWaysIndexRoute = SsrThreeWaysIndexRouteImport.update({
   path: '/ssr-three-ways/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServerFunctionsAreAwesomeIndexRoute =
+  ServerFunctionsAreAwesomeIndexRouteImport.update({
+    id: '/server-functions-are-awesome/',
+    path: '/server-functions-are-awesome/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PagesNLinksIndexRoute = PagesNLinksIndexRouteImport.update({
   id: '/pages-n-links/',
   path: '/pages-n-links/',
@@ -120,6 +128,12 @@ const UseEffectVsQueryApiUsersRoute =
     path: '/useEffect-vs-query/api/users',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServerFunctionsAreAwesomeApiSseRoute =
+  ServerFunctionsAreAwesomeApiSseRouteImport.update({
+    id: '/server-functions-are-awesome/api/sse',
+    path: '/server-functions-are-awesome/api/sse',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PagesNLinksParamsExampleIdRoute =
   PagesNLinksParamsExampleIdRouteImport.update({
     id: '/pages-n-links/params/$exampleId',
@@ -158,12 +172,14 @@ export interface FileRoutesByFullPath {
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
   '/pages-n-links/': typeof PagesNLinksIndexRoute
+  '/server-functions-are-awesome/': typeof ServerFunctionsAreAwesomeIndexRoute
   '/ssr-three-ways/': typeof SsrThreeWaysIndexRoute
   '/useEffect-vs-query/': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/inside': typeof PagesNLinksGroupedInsideRoute
   '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
   '/pages-n-links/catchall/$': typeof PagesNLinksCatchallSplatRoute
   '/pages-n-links/params/$exampleId': typeof PagesNLinksParamsExampleIdRoute
+  '/server-functions-are-awesome/api/sse': typeof ServerFunctionsAreAwesomeApiSseRoute
   '/useEffect-vs-query/api/users': typeof UseEffectVsQueryApiUsersRoute
   '/pages-n-links/app/': typeof PagesNLinksAppIndexRoute
 }
@@ -179,12 +195,14 @@ export interface FileRoutesByTo {
   '/ssr-three-ways/ssr-true': typeof SsrThreeWaysSsrTrueRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
+  '/server-functions-are-awesome': typeof ServerFunctionsAreAwesomeIndexRoute
   '/ssr-three-ways': typeof SsrThreeWaysIndexRoute
   '/useEffect-vs-query': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/inside': typeof PagesNLinksGroupedInsideRoute
   '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
   '/pages-n-links/catchall/$': typeof PagesNLinksCatchallSplatRoute
   '/pages-n-links/params/$exampleId': typeof PagesNLinksParamsExampleIdRoute
+  '/server-functions-are-awesome/api/sse': typeof ServerFunctionsAreAwesomeApiSseRoute
   '/useEffect-vs-query/api/users': typeof UseEffectVsQueryApiUsersRoute
   '/pages-n-links/app': typeof PagesNLinksAppIndexRoute
 }
@@ -203,12 +221,14 @@ export interface FileRoutesById {
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
   '/pages-n-links/': typeof PagesNLinksIndexRoute
+  '/server-functions-are-awesome/': typeof ServerFunctionsAreAwesomeIndexRoute
   '/ssr-three-ways/': typeof SsrThreeWaysIndexRoute
   '/useEffect-vs-query/': typeof UseEffectVsQueryIndexRoute
   '/pages-n-links/_grouped/inside': typeof PagesNLinksGroupedInsideRoute
   '/pages-n-links/app/settings': typeof PagesNLinksAppSettingsRoute
   '/pages-n-links/catchall/$': typeof PagesNLinksCatchallSplatRoute
   '/pages-n-links/params/$exampleId': typeof PagesNLinksParamsExampleIdRoute
+  '/server-functions-are-awesome/api/sse': typeof ServerFunctionsAreAwesomeApiSseRoute
   '/useEffect-vs-query/api/users': typeof UseEffectVsQueryApiUsersRoute
   '/pages-n-links/app/': typeof PagesNLinksAppIndexRoute
 }
@@ -228,12 +248,14 @@ export interface FileRouteTypes {
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
     | '/pages-n-links/'
+    | '/server-functions-are-awesome/'
     | '/ssr-three-ways/'
     | '/useEffect-vs-query/'
     | '/pages-n-links/inside'
     | '/pages-n-links/app/settings'
     | '/pages-n-links/catchall/$'
     | '/pages-n-links/params/$exampleId'
+    | '/server-functions-are-awesome/api/sse'
     | '/useEffect-vs-query/api/users'
     | '/pages-n-links/app/'
   fileRoutesByTo: FileRoutesByTo
@@ -249,12 +271,14 @@ export interface FileRouteTypes {
     | '/ssr-three-ways/ssr-true'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
+    | '/server-functions-are-awesome'
     | '/ssr-three-ways'
     | '/useEffect-vs-query'
     | '/pages-n-links/inside'
     | '/pages-n-links/app/settings'
     | '/pages-n-links/catchall/$'
     | '/pages-n-links/params/$exampleId'
+    | '/server-functions-are-awesome/api/sse'
     | '/useEffect-vs-query/api/users'
     | '/pages-n-links/app'
   id:
@@ -272,12 +296,14 @@ export interface FileRouteTypes {
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-query'
     | '/pages-n-links/'
+    | '/server-functions-are-awesome/'
     | '/ssr-three-ways/'
     | '/useEffect-vs-query/'
     | '/pages-n-links/_grouped/inside'
     | '/pages-n-links/app/settings'
     | '/pages-n-links/catchall/$'
     | '/pages-n-links/params/$exampleId'
+    | '/server-functions-are-awesome/api/sse'
     | '/useEffect-vs-query/api/users'
     | '/pages-n-links/app/'
   fileRoutesById: FileRoutesById
@@ -296,10 +322,12 @@ export interface RootRouteChildren {
   UseEffectVsQueryUseEffectRoute: typeof UseEffectVsQueryUseEffectRoute
   UseEffectVsQueryUseQueryRoute: typeof UseEffectVsQueryUseQueryRoute
   PagesNLinksIndexRoute: typeof PagesNLinksIndexRoute
+  ServerFunctionsAreAwesomeIndexRoute: typeof ServerFunctionsAreAwesomeIndexRoute
   SsrThreeWaysIndexRoute: typeof SsrThreeWaysIndexRoute
   UseEffectVsQueryIndexRoute: typeof UseEffectVsQueryIndexRoute
   PagesNLinksCatchallSplatRoute: typeof PagesNLinksCatchallSplatRoute
   PagesNLinksParamsExampleIdRoute: typeof PagesNLinksParamsExampleIdRoute
+  ServerFunctionsAreAwesomeApiSseRoute: typeof ServerFunctionsAreAwesomeApiSseRoute
   UseEffectVsQueryApiUsersRoute: typeof UseEffectVsQueryApiUsersRoute
 }
 
@@ -331,6 +359,13 @@ declare module '@tanstack/react-router' {
       path: '/ssr-three-ways'
       fullPath: '/ssr-three-ways/'
       preLoaderRoute: typeof SsrThreeWaysIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/server-functions-are-awesome/': {
+      id: '/server-functions-are-awesome/'
+      path: '/server-functions-are-awesome'
+      fullPath: '/server-functions-are-awesome/'
+      preLoaderRoute: typeof ServerFunctionsAreAwesomeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pages-n-links/': {
@@ -424,6 +459,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseEffectVsQueryApiUsersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/server-functions-are-awesome/api/sse': {
+      id: '/server-functions-are-awesome/api/sse'
+      path: '/server-functions-are-awesome/api/sse'
+      fullPath: '/server-functions-are-awesome/api/sse'
+      preLoaderRoute: typeof ServerFunctionsAreAwesomeApiSseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pages-n-links/params/$exampleId': {
       id: '/pages-n-links/params/$exampleId'
       path: '/pages-n-links/params/$exampleId'
@@ -496,10 +538,12 @@ const rootRouteChildren: RootRouteChildren = {
   UseEffectVsQueryUseEffectRoute: UseEffectVsQueryUseEffectRoute,
   UseEffectVsQueryUseQueryRoute: UseEffectVsQueryUseQueryRoute,
   PagesNLinksIndexRoute: PagesNLinksIndexRoute,
+  ServerFunctionsAreAwesomeIndexRoute: ServerFunctionsAreAwesomeIndexRoute,
   SsrThreeWaysIndexRoute: SsrThreeWaysIndexRoute,
   UseEffectVsQueryIndexRoute: UseEffectVsQueryIndexRoute,
   PagesNLinksCatchallSplatRoute: PagesNLinksCatchallSplatRoute,
   PagesNLinksParamsExampleIdRoute: PagesNLinksParamsExampleIdRoute,
+  ServerFunctionsAreAwesomeApiSseRoute: ServerFunctionsAreAwesomeApiSseRoute,
   UseEffectVsQueryApiUsersRoute: UseEffectVsQueryApiUsersRoute,
 }
 export const routeTree = rootRouteImport

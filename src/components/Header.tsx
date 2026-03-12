@@ -50,6 +50,12 @@ export default function Header() {
               >
                 SSR Three Ways
               </Link>
+              <Link
+                to="/server-functions-are-awesome"
+                className="block rounded-lg px-3 py-2 text-sm text-[var(--sea-ink-soft)] no-underline transition hover:bg-[var(--link-bg-hover)] hover:text-[var(--sea-ink)]"
+              >
+                Server Functions Are Awesome
+              </Link>
             </div>
           </details>
         </div>

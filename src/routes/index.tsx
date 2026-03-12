@@ -24,6 +24,13 @@ const demos = [
     path: '/ssr-three-ways',
     tag: 'Start',
   },
+  {
+    title: 'Server Functions Are Awesome',
+    description:
+      'GET and POST server functions, input validation, middleware, JSON responses, HTTP streaming, and SSE.',
+    path: '/server-functions-are-awesome',
+    tag: 'Start',
+  },
 ]
 
 function App() {
