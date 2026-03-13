@@ -18,6 +18,7 @@ import { Route as PagesNLinksIndexRouteImport } from './routes/pages-n-links/ind
 import { Route as UseEffectVsQueryUseQueryRouteImport } from './routes/useEffect-vs-query/use-query'
 import { Route as UseEffectVsQueryUseMutationRouteImport } from './routes/useEffect-vs-query/use-mutation'
 import { Route as UseEffectVsQueryUseEffectRouteImport } from './routes/useEffect-vs-query/use-effect'
+import { Route as SsrThreeWaysSsrTrueQueryRouteImport } from './routes/ssr-three-ways/ssr-true-query'
 import { Route as SsrThreeWaysSsrTrueRouteImport } from './routes/ssr-three-ways/ssr-true'
 import { Route as SsrThreeWaysSsrFalseWorksRouteImport } from './routes/ssr-three-ways/ssr-false-works'
 import { Route as SsrThreeWaysSsrFalseRouteImport } from './routes/ssr-three-ways/ssr-false'
@@ -82,6 +83,12 @@ const UseEffectVsQueryUseEffectRoute =
   UseEffectVsQueryUseEffectRouteImport.update({
     id: '/useEffect-vs-query/use-effect',
     path: '/useEffect-vs-query/use-effect',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SsrThreeWaysSsrTrueQueryRoute =
+  SsrThreeWaysSsrTrueQueryRouteImport.update({
+    id: '/ssr-three-ways/ssr-true-query',
+    path: '/ssr-three-ways/ssr-true-query',
     getParentRoute: () => rootRouteImport,
   } as any)
 const SsrThreeWaysSsrTrueRoute = SsrThreeWaysSsrTrueRouteImport.update({
@@ -183,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/ssr-three-ways/ssr-false': typeof SsrThreeWaysSsrFalseRoute
   '/ssr-three-ways/ssr-false-works': typeof SsrThreeWaysSsrFalseWorksRoute
   '/ssr-three-ways/ssr-true': typeof SsrThreeWaysSsrTrueRoute
+  '/ssr-three-ways/ssr-true-query': typeof SsrThreeWaysSsrTrueQueryRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-mutation': typeof UseEffectVsQueryUseMutationRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
@@ -209,6 +217,7 @@ export interface FileRoutesByTo {
   '/ssr-three-ways/ssr-false': typeof SsrThreeWaysSsrFalseRoute
   '/ssr-three-ways/ssr-false-works': typeof SsrThreeWaysSsrFalseWorksRoute
   '/ssr-three-ways/ssr-true': typeof SsrThreeWaysSsrTrueRoute
+  '/ssr-three-ways/ssr-true-query': typeof SsrThreeWaysSsrTrueQueryRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-mutation': typeof UseEffectVsQueryUseMutationRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
@@ -236,6 +245,7 @@ export interface FileRoutesById {
   '/ssr-three-ways/ssr-false': typeof SsrThreeWaysSsrFalseRoute
   '/ssr-three-ways/ssr-false-works': typeof SsrThreeWaysSsrFalseWorksRoute
   '/ssr-three-ways/ssr-true': typeof SsrThreeWaysSsrTrueRoute
+  '/ssr-three-ways/ssr-true-query': typeof SsrThreeWaysSsrTrueQueryRoute
   '/useEffect-vs-query/use-effect': typeof UseEffectVsQueryUseEffectRoute
   '/useEffect-vs-query/use-mutation': typeof UseEffectVsQueryUseMutationRoute
   '/useEffect-vs-query/use-query': typeof UseEffectVsQueryUseQueryRoute
@@ -265,6 +275,7 @@ export interface FileRouteTypes {
     | '/ssr-three-ways/ssr-false'
     | '/ssr-three-ways/ssr-false-works'
     | '/ssr-three-ways/ssr-true'
+    | '/ssr-three-ways/ssr-true-query'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-mutation'
     | '/useEffect-vs-query/use-query'
@@ -291,6 +302,7 @@ export interface FileRouteTypes {
     | '/ssr-three-ways/ssr-false'
     | '/ssr-three-ways/ssr-false-works'
     | '/ssr-three-ways/ssr-true'
+    | '/ssr-three-ways/ssr-true-query'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-mutation'
     | '/useEffect-vs-query/use-query'
@@ -317,6 +329,7 @@ export interface FileRouteTypes {
     | '/ssr-three-ways/ssr-false'
     | '/ssr-three-ways/ssr-false-works'
     | '/ssr-three-ways/ssr-true'
+    | '/ssr-three-ways/ssr-true-query'
     | '/useEffect-vs-query/use-effect'
     | '/useEffect-vs-query/use-mutation'
     | '/useEffect-vs-query/use-query'
@@ -345,6 +358,7 @@ export interface RootRouteChildren {
   SsrThreeWaysSsrFalseRoute: typeof SsrThreeWaysSsrFalseRoute
   SsrThreeWaysSsrFalseWorksRoute: typeof SsrThreeWaysSsrFalseWorksRoute
   SsrThreeWaysSsrTrueRoute: typeof SsrThreeWaysSsrTrueRoute
+  SsrThreeWaysSsrTrueQueryRoute: typeof SsrThreeWaysSsrTrueQueryRoute
   UseEffectVsQueryUseEffectRoute: typeof UseEffectVsQueryUseEffectRoute
   UseEffectVsQueryUseMutationRoute: typeof UseEffectVsQueryUseMutationRoute
   UseEffectVsQueryUseQueryRoute: typeof UseEffectVsQueryUseQueryRoute
@@ -422,6 +436,13 @@ declare module '@tanstack/react-router' {
       path: '/useEffect-vs-query/use-effect'
       fullPath: '/useEffect-vs-query/use-effect'
       preLoaderRoute: typeof UseEffectVsQueryUseEffectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ssr-three-ways/ssr-true-query': {
+      id: '/ssr-three-ways/ssr-true-query'
+      path: '/ssr-three-ways/ssr-true-query'
+      fullPath: '/ssr-three-ways/ssr-true-query'
+      preLoaderRoute: typeof SsrThreeWaysSsrTrueQueryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ssr-three-ways/ssr-true': {
@@ -577,6 +598,7 @@ const rootRouteChildren: RootRouteChildren = {
   SsrThreeWaysSsrFalseRoute: SsrThreeWaysSsrFalseRoute,
   SsrThreeWaysSsrFalseWorksRoute: SsrThreeWaysSsrFalseWorksRoute,
   SsrThreeWaysSsrTrueRoute: SsrThreeWaysSsrTrueRoute,
+  SsrThreeWaysSsrTrueQueryRoute: SsrThreeWaysSsrTrueQueryRoute,
   UseEffectVsQueryUseEffectRoute: UseEffectVsQueryUseEffectRoute,
   UseEffectVsQueryUseMutationRoute: UseEffectVsQueryUseMutationRoute,
   UseEffectVsQueryUseQueryRoute: UseEffectVsQueryUseQueryRoute,

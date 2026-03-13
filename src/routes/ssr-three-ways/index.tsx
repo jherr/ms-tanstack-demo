@@ -40,6 +40,14 @@ const modes = [
     tag: 'Works',
     tagClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
   },
+  {
+    title: 'ssr: true + query preload',
+    description:
+      'Loader preloads CS heroes into TanStack Query cache before render.',
+    to: '/ssr-three-ways/ssr-true-query' as const,
+    tag: 'Works',
+    tagClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+  },
 ]
 
 function SsrThreeWaysIndex() {
@@ -72,7 +80,7 @@ function SsrThreeWaysIndex() {
           </a>
         </section>
 
-        <ul className="grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-5">
           {modes.map((m) => (
             <li key={m.to}>
               <Link

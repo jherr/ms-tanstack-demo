@@ -50,8 +50,13 @@ async function persistUsers(nextUsers: DemoUser[]) {
   users = nextUsers;
 }
 
+export async function getCsHeroes(): Promise<DemoUser[]> {
+  users = await ensureUsersFile();
+  return users;
+}
+
 export async function addCsHero(name: string): Promise<DemoUser> {
-  const currentUsers = await ensureUsersFile();
+  const currentUsers = await getCsHeroes();
   const hero: DemoUser = {
     id:
       currentUsers.length === 0
@@ -70,7 +75,7 @@ export const Route = createFileRoute("/useEffect-vs-query/api/users")({
       GET: async () => {
         // Tiny delay makes request behavior easier to see in demos.
         await new Promise((resolve) => setTimeout(resolve, 250));
-        users = await ensureUsersFile();
+        users = await getCsHeroes();
         return Response.json(users);
       },
     },
