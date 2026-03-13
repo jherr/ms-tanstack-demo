@@ -29,6 +29,12 @@ function UseEffectVsQueryIndex() {
           >
             useQuery Version (Fixed)
           </Link>
+          <Link
+            to="/useEffect-vs-query/use-mutation"
+            className="rounded-full border border-indigo-300 bg-indigo-50 px-5 py-2.5 text-sm font-semibold text-indigo-700 no-underline transition hover:-translate-y-0.5 hover:bg-indigo-100"
+          >
+            useMutation Version (Add Hero)
+          </Link>
         </div>
       </section>
     </main>

@@ -1,56 +1,63 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/pages-n-links/')({
+export const Route = createFileRoute("/pages-n-links/")({
   component: PagesNLinksIndex,
-})
+});
 
 const ROUTING_GUIDE =
-  'https://tanstack.com/start/latest/docs/framework/react/guide/routing'
+  "https://tanstack.com/start/latest/docs/framework/react/guide/routing";
 const API_REF =
-  'https://tanstack.com/router/latest/docs/api/file-based-routing'
+  "https://tanstack.com/router/latest/docs/api/file-based-routing";
 
 const examples = [
   {
-    title: 'Normal page',
-    description: 'Static route defined with a dot-file (pages-n-links.normal.tsx).',
-    to: '/pages-n-links/normal' as const,
-    docsHash: '#creating-file-routes',
+    title: "Normal page",
+    description:
+      "Static route defined with a dot-file (pages-n-links.normal.tsx).",
+    to: "/pages-n-links/normal" as const,
+    docsHash: "#creating-file-routes",
   },
   {
-    title: 'Catch-all route',
-    description: 'Wildcard segment via catchall/$.tsx matches any path under /pages-n-links/catchall/….',
-    to: '/pages-n-links/catchall/$' as const,
-    params: { _splat: 'any/path/you/like' },
-    docsHash: '#types-of-routes',
+    title: "Catch-all route",
+    description:
+      "Wildcard segment via catchall/$.tsx matches any path under /pages-n-links/catchall/….",
+    to: "/pages-n-links/catchall/$" as const,
+    params: { _splat: "any/path/you/like" },
+    docsHash: "#types-of-routes",
   },
   {
-    title: 'Parameterized route',
-    description: 'Dynamic segment params/$exampleId.tsx — type-safe params and Link params.',
-    to: '/pages-n-links/params/$exampleId' as const,
-    params: { exampleId: 'hello' },
-    docsHash: '#defining-routes',
+    title: "Parameterized route",
+    description:
+      "Dynamic segment params/$exampleId.tsx — type-safe params and Link params.",
+    to: "/pages-n-links/params/$exampleId" as const,
+    params: { exampleId: "hello" },
+    docsHash: "#defining-routes",
   },
   {
-    title: 'Underscore grouping',
-    description: 'Pathless layout _grouped/ — URL is /pages-n-links/inside, files live under _grouped/.',
-    to: '/pages-n-links/inside' as const,
-    docsHash: '#types-of-routes',
+    title: "Underscore grouping",
+    description:
+      "Pathless layout _grouped/ — URL is /pages-n-links/inside, files live under _grouped/.",
+    to: "/pages-n-links/inside" as const,
+    docsHash: "#types-of-routes",
   },
   {
-    title: 'Search (Zod)',
-    description: 'Search params validated with Zod at runtime; valid and invalid URLs show different UI.',
-    to: '/pages-n-links/search' as const,
-    search: { query: 'hello', page: 1 },
-    docsHash: '#quick-start',
-    docsUrl: 'https://tanstack.com/router/latest/docs/how-to/validate-search-params',
+    title: "Search (Zod)",
+    description:
+      "Search params validated with Zod at runtime; valid and invalid URLs show different UI.",
+    to: "/pages-n-links/search" as const,
+    search: { query: "hello", page: 1 },
+    docsHash: "#quick-start",
+    docsUrl:
+      "https://tanstack.com/router/latest/docs/how-to/validate-search-params",
   },
   {
-    title: 'Nested layout',
-    description: 'Logged-in style layout at /pages-n-links/app with shared shell and child routes (Dashboard, Settings).',
-    to: '/pages-n-links/app' as const,
-    docsHash: '#nested-routing',
+    title: "Nested layout",
+    description:
+      "Logged-in style layout at /pages-n-links/app with shared shell and child routes (Dashboard, Settings).",
+    to: "/pages-n-links/app" as const,
+    docsHash: "#nested-routing",
   },
-]
+];
 
 function PagesNLinksIndex() {
   return (
@@ -62,7 +69,11 @@ function PagesNLinksIndex() {
         </h1>
         <p className="mb-6 max-w-2xl text-base text-[var(--sea-ink-soft)] sm:text-lg">
           Normal routes, catch-all, parameterized routes, and underscore
-          grouping — all with typed <code className="rounded bg-[var(--chip-bg)] px-1.5 py-0.5 text-sm">Link</code> components.
+          grouping — all with typed{" "}
+          <code className="rounded bg-[var(--chip-bg)] px-1.5 py-0.5 text-sm">
+            Link
+          </code>{" "}
+          components.
         </p>
 
         <section className="mb-8 rounded-2xl border border-[var(--line)] bg-[var(--chip-bg)] p-6 sm:p-8">
@@ -99,12 +110,12 @@ function PagesNLinksIndex() {
 
         <ul className="grid list-none gap-4 p-0 sm:grid-cols-2">
           {examples.map((ex) => (
-            <li key={ex.to + (ex.search ? JSON.stringify(ex.search) : '')}>
+            <li key={ex.to + (ex.search ? JSON.stringify(ex.search) : "")}>
               <div className="island-shell feature-card group rounded-2xl p-6 transition hover:-translate-y-1">
                 <Link
                   to={ex.to}
-                  params={'params' in ex ? ex.params : undefined}
-                  search={'search' in ex ? ex.search : undefined}
+                  params={"params" in ex ? ex.params : undefined}
+                  search={"search" in ex ? ex.search : undefined}
                   className="block no-underline"
                 >
                   <h2 className="mb-2 text-lg font-semibold text-[var(--sea-ink)] group-hover:text-[var(--lagoon-deep)]">
@@ -115,7 +126,11 @@ function PagesNLinksIndex() {
                   </p>
                 </Link>
                 <a
-                  href={'docsUrl' in ex && ex.docsUrl ? `${ex.docsUrl}${ex.docsHash ? ex.docsHash : ''}` : `${ROUTING_GUIDE}${ex.docsHash}`}
+                  href={
+                    "docsUrl" in ex && ex.docsUrl
+                      ? `${ex.docsUrl}${ex.docsHash ? ex.docsHash : ""}`
+                      : `${ROUTING_GUIDE}${ex.docsHash}`
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-[var(--lagoon-deep)] underline hover:no-underline"
@@ -128,5 +143,5 @@ function PagesNLinksIndex() {
         </ul>
       </section>
     </main>
-  )
+  );
 }

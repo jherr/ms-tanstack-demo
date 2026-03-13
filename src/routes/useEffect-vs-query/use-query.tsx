@@ -1,25 +1,30 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { useQuery } from '@tanstack/react-query'
+import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 
-export const Route = createFileRoute('/useEffect-vs-query/use-query')({
+export const Route = createFileRoute("/useEffect-vs-query/use-query")({
   component: UseQueryVersion,
-})
+});
 
-const API_URL = '/useEffect-vs-query/api/users'
+const API_URL = "/useEffect-vs-query/api/users";
 
 async function fetchUsers(): Promise<Array<{ id: number; name: string }>> {
-  const res = await fetch(API_URL)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
+  const res = await fetch(API_URL);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   // Simulate 1 second delay
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-  return res.json()
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return res.json();
 }
 
 function UseQueryVersion() {
-  const { data: users, isLoading, error, dataUpdatedAt } = useQuery({
-    queryKey: ['users'],
+  const {
+    data: users,
+    isLoading,
+    error,
+    dataUpdatedAt,
+  } = useQuery({
+    queryKey: ["users"],
     queryFn: fetchUsers,
-  })
+  });
 
   return (
     <div className="page-wrap px-4 pb-8 pt-14">
@@ -37,15 +42,15 @@ function UseQueryVersion() {
         <div className="space-y-4">
           <div className="flex items-center gap-3 rounded-lg bg-emerald-50 border border-emerald-200 p-4">
             <span className="text-emerald-600 text-lg">
-              {isLoading ? '...' : 'OK'}
+              {isLoading ? "..." : "OK"}
             </span>
             <div>
               <p className="text-sm font-semibold text-emerald-800">
-                {isLoading ? 'Fetching...' : 'Fetched once, cached.'}
+                {isLoading ? "Fetching..." : "Fetched once, cached."}
               </p>
               <p className="text-xs text-emerald-600">
                 {isLoading
-                  ? 'One request in flight'
+                  ? "One request in flight"
                   : `Last updated: ${new Date(dataUpdatedAt).toLocaleTimeString()}`}
               </p>
             </div>
@@ -73,7 +78,7 @@ function UseQueryVersion() {
 
           {users && (
             <ul className="space-y-1">
-              {users.slice(0, 5).map((user) => (
+              {users.map((user) => (
                 <li
                   key={user.id}
                   className="rounded-lg bg-white/60 border border-black/5 p-2 text-sm text-[var(--sea-ink)]"
@@ -86,5 +91,5 @@ function UseQueryVersion() {
         </div>
       </div>
     </div>
-  )
+  );
 }

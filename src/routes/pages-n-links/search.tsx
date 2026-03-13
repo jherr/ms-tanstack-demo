@@ -1,27 +1,26 @@
-import {
-  createFileRoute,
-  Link,
-  useRouter,
-} from '@tanstack/react-router'
-import { zodValidator, fallback } from '@tanstack/zod-adapter'
-import { z } from 'zod'
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { zodValidator, fallback } from "@tanstack/zod-adapter";
+import { z } from "zod";
 
 const searchSchema = z.object({
-  query: z.string().min(1, 'Search query is required'),
-  page: fallback(z.number().int().positive('Page must be a positive number'), 1),
-})
+  query: z.string().min(1, "Search query is required"),
+  page: fallback(
+    z.number().int().positive("Page must be a positive number"),
+    1,
+  ),
+});
 
-export const Route = createFileRoute('/pages-n-links/search')({
+export const Route = createFileRoute("/pages-n-links/search")({
   validateSearch: zodValidator(searchSchema),
   errorComponent: SearchError,
   component: SearchPage,
-})
+});
 
 const VALIDATE_SEARCH_DOCS =
-  'https://tanstack.com/router/latest/docs/how-to/validate-search-params'
+  "https://tanstack.com/router/latest/docs/how-to/validate-search-params";
 
 function SearchError({ error }: { error: Error }) {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <main className="page-wrap px-4 pb-8 pt-14">
       <section className="island-shell rounded-2xl border-2 border-red-200 bg-red-50/50 p-6 dark:border-red-800 dark:bg-red-950/20 sm:p-8">
@@ -35,16 +34,19 @@ function SearchError({ error }: { error: Error }) {
           {error.message}
         </p>
         <p className="mb-6 text-sm text-[var(--sea-ink-soft)]">
-          This is the route&apos;s <code className="rounded bg-[var(--chip-bg)] px-1.5 py-0.5">errorComponent</code>.
-          Fix the URL or reset to a valid example.
+          This is the route&apos;s{" "}
+          <code className="rounded bg-[var(--chip-bg)] px-1.5 py-0.5">
+            errorComponent
+          </code>
+          . Fix the URL or reset to a valid example.
         </p>
         <div className="flex flex-wrap gap-3">
           <button
             type="button"
             onClick={() =>
               router.navigate({
-                to: '/pages-n-links/search',
-                search: { query: 'hello', page: 1 },
+                to: "/pages-n-links/search",
+                search: { query: "hello", page: 1 },
               })
             }
             className="rounded-full border border-red-300 bg-red-100 px-4 py-2 text-sm font-semibold text-red-800 no-underline transition hover:bg-red-200 dark:border-red-700 dark:bg-red-900/50 dark:text-red-200 dark:hover:bg-red-800/50"
@@ -70,11 +72,11 @@ function SearchError({ error }: { error: Error }) {
         </p>
       </section>
     </main>
-  )
+  );
 }
 
 function SearchPage() {
-  const { query, page } = Route.useSearch()
+  const { query, page } = Route.useSearch();
 
   return (
     <main className="page-wrap px-4 pb-8 pt-14">
@@ -85,7 +87,11 @@ function SearchPage() {
         </h1>
         <p className="mb-6 text-base text-[var(--sea-ink-soft)]">
           Search params are validated at runtime with Zod. Invalid URLs show the
-          route&apos;s <code className="rounded bg-[var(--chip-bg)] px-1.5 py-0.5">errorComponent</code>.
+          route&apos;s{" "}
+          <code className="rounded bg-[var(--chip-bg)] px-1.5 py-0.5">
+            errorComponent
+          </code>
+          .
         </p>
         <div className="mb-6 rounded-xl bg-[var(--chip-bg)] p-4 font-mono text-sm text-[var(--sea-ink)]">
           <p>query = &quot;{query}&quot;</p>
@@ -97,7 +103,7 @@ function SearchPage() {
         <div className="mb-6 flex flex-wrap gap-3">
           <Link
             to="/pages-n-links/search"
-            search={{ query: 'hello', page: 1 }}
+            search={{ query: "hello", page: 1 }}
             className="rounded-full border border-emerald-300 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-800 no-underline transition hover:bg-emerald-100 dark:border-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-200 dark:hover:bg-emerald-800/30"
           >
             Valid: ?query=hello&page=1
@@ -133,5 +139,5 @@ function SearchPage() {
         </Link>
       </section>
     </main>
-  )
+  );
 }
